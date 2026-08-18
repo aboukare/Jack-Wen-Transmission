@@ -37,3 +37,14 @@
     if(prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
     if(nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
   }
+
+  // Some mobile browsers ignore the declarative autoplay attribute — force it,
+  // with a fallback that kicks in on the first tap/scroll if that's blocked too.
+  document.querySelectorAll('.trans-video').forEach((video) => {
+    video.muted = true;
+    const tryPlay = () => video.play().catch(() => {});
+    tryPlay();
+    ['pointerdown', 'touchstart', 'scroll'].forEach((evt) => {
+      document.addEventListener(evt, tryPlay, { once: true, passive: true });
+    });
+  });
