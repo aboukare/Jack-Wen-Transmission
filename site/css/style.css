@@ -341,9 +341,11 @@
   @media (max-width:900px){ .appt-grid{grid-template-columns:1fr;} .appt-form{grid-template-columns:1fr; padding:26px;} }
 
   @media (max-width:900px){
+    .hero{min-height:0;}
+    .hero-slide.active{position:relative; inset:auto;}
     .hero-inner{grid-template-columns:1fr; text-align:left; padding-top:120px;}
     .stage{height:280px; order:-1;}
-    .hero-video-layer{justify-content:center;}
+    .hero-video-layer{align-items:flex-start; justify-content:center;}
     #transRig{width:520px; height:520px; max-width:92vw; margin-right:0;}
     .services-head{grid-template-columns:1fr;}
     .side-label{display:none;}
