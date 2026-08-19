@@ -20,7 +20,7 @@
 
     const subject = encodeURIComponent(`Appointment Request - ${data.fname}`);
     const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:info@jackwentransmission.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:Jackwentransmission@gmail.com?subject=${subject}&body=${body}`;
 
     success.classList.add('show');
     success.scrollIntoView({behavior:'smooth', block:'nearest'});
