@@ -7,7 +7,7 @@
 <meta name="description" content="Book a free transmission diagnosis with Jack Wen Transmission Inc., proudly serving Scarborough and the Greater Toronto Area.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=29">
+<link rel="stylesheet" href="css/style.css?v=30">
 </head>
 <body>
 
@@ -42,7 +42,9 @@
   <div class="wrap">
     <div class="appt-grid">
       <form class="appt-form" id="apptForm">
-        <div class="form-success" id="formSuccess">Thanks! Your email app should now be open with your appointment request. Hit send and we'll get back to you shortly to confirm.</div>
+        <div class="form-success" id="formSuccess">Thanks! Your repair request has been sent. We'll get back to you shortly to confirm.</div>
+        <div class="form-error" id="formError">Something went wrong sending your request. Please try again, or call us directly at <a href="tel:+16475531530">(647) 553-1530</a>.</div>
+        <input type="checkbox" name="botcheck" class="hidden-field" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="field">
           <label for="fname">Full Name</label>
@@ -155,6 +157,6 @@
 
 <script src="js/header.js?v=3"></script>
 <script src="js/reveal.js"></script>
-<script src="js/appointment.js?v=2"></script>
+<script src="js/appointment.js?v=3"></script>
 </body>
 </html>
