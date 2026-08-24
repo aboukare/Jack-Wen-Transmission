@@ -7,7 +7,7 @@
 <meta name="description" content="Jack Wen Transmission Inc. provides expert transmission diagnostics, repair, and rebuilds in Scarborough and across the Greater Toronto Area. Over 30 years of trusted service with an in-house warranty.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=25">
+<link rel="stylesheet" href="css/style.css?v=26">
 </head>
 <body class="home">
 
@@ -28,22 +28,21 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <!-- Hero background video: mobile portrait / desktop landscape -->
+  <div class="hero-media" aria-hidden="true">
+    <video class="hero-video" id="heroVideo"
+           autoplay muted loop playsinline webkit-playsinline
+           preload="auto" disablepictureinpicture
+           poster="assets/hero/jackwen-hero-desktop-poster.jpg">
+      <source src="videos/jackwen-hero-mobile.mp4" media="(max-width: 900px) and (orientation: portrait)" type="video/mp4">
+      <source src="videos/jackwen-hero-desktop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
 
   <div class="hero-slides">
     <!-- SLIDE 1 — Intro -->
     <div class="hero-slide active">
-      <div class="hero-video-layer">
-        <div id="transRig">
-          <div class="orbit-ring orbit-ring-1"></div>
-          <div class="orbit-ring orbit-ring-2"></div>
-          <div class="orbit-ring orbit-ring-3"></div>
-          <video class="trans-video" autoplay muted loop playsinline webkit-playsinline>
-            <source src="videos/home-banner-transmission.mp4" type="video/mp4">
-            <source src="videos/home-banner-transmission.webm" type="video/webm">
-          </video>
-        </div>
-      </div>
       <div class="hero-inner">
         <div>
           <span class="eyebrow">// Quality Repair You Can Count On</span>
@@ -483,7 +482,7 @@
 
 <script src="js/header.js?v=3"></script>
 <script src="js/reveal.js"></script>
-<script src="js/hero-slider.js?v=2"></script>
+<script src="js/hero-slider.js?v=3"></script>
 <script src="js/reviews-slider.js"></script>
 <script src="js/script.js?v=3"></script>
 </body>

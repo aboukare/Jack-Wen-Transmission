@@ -38,60 +38,43 @@
     if(nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
   }
 
-  // Some mobile browsers ignore the declarative autoplay attribute — force it,
-  // with a fallback that kicks in on the first tap/scroll if that's blocked too.
-  document.querySelectorAll('.trans-video').forEach((video) => {
-    video.muted = true;
-    const tryPlay = () => video.play().catch(() => {});
+  // ---- Hero background video ---------------------------------------------
+  const heroVideo = document.getElementById('heroVideo');
+
+  if(heroVideo){
+    // Some mobile browsers ignore the declarative autoplay attribute — force it,
+    // with a fallback that kicks in on the first tap/scroll if that's blocked too.
+    const tryPlay = () => heroVideo.play().catch(() => {});
+    heroVideo.muted = true;
     tryPlay();
     ['pointerdown', 'touchstart', 'scroll'].forEach((evt) => {
       document.addEventListener(evt, tryPlay, { once: true, passive: true });
     });
-  });
 
-  // The banner video is shot on solid black. CSS mix-blend-mode doesn't
-  // reliably composite against <video> elements across browsers, so instead
-  // draw each frame onto a canvas and key the near-black background out to
-  // real alpha transparency, letting the actual page background show through.
-  document.querySelectorAll('.trans-video').forEach((video) => {
-    const canvas = document.createElement('canvas');
-    canvas.className = 'trans-video-canvas';
-    video.insertAdjacentElement('afterend', canvas);
+    // The <source media> attributes already picked the right file on first load,
+    // so a phone never downloads the desktop asset. Browsers don't re-run that
+    // selection on resize or rotation though, so swap manually — and only when
+    // the breakpoint actually flips, to avoid re-fetching what's already playing.
+    const mobileQuery = window.matchMedia('(max-width: 900px) and (orientation: portrait)');
+    const VARIANTS = {
+      true:  { src: 'videos/jackwen-hero-mobile.mp4',  poster: 'assets/hero/jackwen-hero-mobile-poster.jpg' },
+      false: { src: 'videos/jackwen-hero-desktop.mp4', poster: 'assets/hero/jackwen-hero-desktop-poster.jpg' }
+    };
+    let isMobile = mobileQuery.matches;
 
-    const W = 640, H = 428;
-    canvas.width = W;
-    canvas.height = H;
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    const LOW = 30, HIGH = 85, RANGE = HIGH - LOW;
-    let started = false, skip = 0;
-
-    function drawRect(vw, vh, cw, ch){
-      const vr = vw / vh, cr = cw / ch;
-      let dw, dh;
-      if(vr > cr){ dw = cw; dh = cw / vr; } else { dh = ch; dw = ch * vr; }
-      return [(cw - dw) / 2, (ch - dh) / 2, dw, dh];
+    function syncSource(){
+      if(mobileQuery.matches === isMobile) return;
+      isMobile = mobileQuery.matches;
+      const variant = VARIANTS[isMobile];
+      heroVideo.poster = variant.poster;
+      heroVideo.src = variant.src; // a direct src wins over the <source> children
+      heroVideo.load();
+      tryPlay();
     }
 
-    function tick(){
-      requestAnimationFrame(tick);
-      // Decorative background loop — every 3rd frame (~20fps at 60Hz) is plenty
-      // smooth and keeps the per-pixel keying cheap on mobile.
-      skip = (skip + 1) % 3;
-      if(skip !== 0) return;
-      if(video.readyState >= 2 && video.videoWidth){
-        const [dx, dy, dw, dh] = drawRect(video.videoWidth, video.videoHeight, W, H);
-        ctx.clearRect(0, 0, W, H);
-        ctx.drawImage(video, dx, dy, dw, dh);
-        const frame = ctx.getImageData(0, 0, W, H);
-        const d = frame.data;
-        for(let i = 0; i < d.length; i += 4){
-          // cheap brightness proxy (max channel) instead of a weighted-luminance formula
-          const v = d[i] > d[i + 1] ? (d[i] > d[i + 2] ? d[i] : d[i + 2]) : (d[i + 1] > d[i + 2] ? d[i + 1] : d[i + 2]);
-          d[i + 3] = v <= LOW ? 0 : v >= HIGH ? 255 : ((v - LOW) * 255 / RANGE) | 0;
-        }
-        ctx.putImageData(frame, 0, 0);
-        if(!started){ started = true; video.style.opacity = '0'; }
-      }
+    if(mobileQuery.addEventListener){
+      mobileQuery.addEventListener('change', syncSource);
+    } else {
+      mobileQuery.addListener(syncSource); // Safari < 14
     }
-    requestAnimationFrame(tick);
-  });
+  }
