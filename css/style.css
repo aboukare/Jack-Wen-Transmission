@@ -289,6 +289,9 @@
   @media (max-width:700px){ .footer-inner{flex-direction:column;} .footer-badge{order:-1; width:100px;} }
   .footer-links a{text-transform:uppercase; letter-spacing:1px; color:var(--steel-light);}
   .footer-links a:hover{color:var(--chrome);}
+  .footer-credit{margin-top:12px; font-size:10.5px; letter-spacing:0.3px; opacity:0.6;}
+  .footer-credit a{color:var(--steel-light); text-decoration:underline; text-underline-offset:2px;}
+  .footer-credit a:hover{color:var(--chrome);}
 
   /* ---------------- INNER PAGE HERO (matches homepage light theme) ---------------- */
   .page-hero{position:relative; background:var(--chrome); padding:130px 0 30px; overflow:hidden;}
