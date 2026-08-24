@@ -26,19 +26,20 @@
     position:fixed; top:0; left:0; right:0; z-index:100;
     display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:24px;
     padding:16px 40px;
-    background:transparent;
+    background:var(--graphite);
+    border-bottom:1px solid rgba(237,234,227,0.10);
     transition:transform 0.35s ease;
   }
   header.header-hidden{transform:translateY(-100%);}
   .logo-mini{display:flex; align-items:center; gap:10px;}
   .logo-img{height:48px; width:auto;}
   nav.navlinks{display:flex; align-items:center; justify-content:center; gap:36px;}
-  nav.navlinks a.navlink{font-size:13px; letter-spacing:1px; color:var(--graphite); text-transform:uppercase; text-shadow:0 0 10px rgba(196,30,44,0.18); transition:color .2s, text-shadow .2s;}
-  nav.navlinks a.navlink:hover{color:var(--red); text-shadow:0 0 14px rgba(196,30,44,0.45);}
+  nav.navlinks a.navlink{font-size:13px; letter-spacing:1px; color:var(--chrome); text-transform:uppercase; text-shadow:0 0 10px rgba(196,30,44,0.18); transition:color .2s, text-shadow .2s;}
+  nav.navlinks a.navlink:hover{color:#F2545F; text-shadow:0 0 14px rgba(196,30,44,0.45);}
   header .btn-primary{padding:12px 22px; font-size:12px; justify-self:end;}
   .navlink-cta{display:none;}
   .menu-toggle{display:none; width:30px; height:20px; position:relative; background:none; border:none; cursor:pointer; padding:0; z-index:101;}
-  .menu-toggle span{display:block; position:absolute; left:0; width:100%; height:2px; background:var(--graphite); transition:transform .25s ease, opacity .2s ease;}
+  .menu-toggle span{display:block; position:absolute; left:0; width:100%; height:2px; background:var(--chrome); transition:transform .25s ease, opacity .2s ease;}
   .menu-toggle span:nth-child(1){top:0;}
   .menu-toggle span:nth-child(2){top:9px;}
   .menu-toggle span:nth-child(3){top:18px;}
