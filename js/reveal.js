@@ -5,7 +5,10 @@
       '.why-highlights > div', '.stats-grid > div', '.faq-item',
       '.services-head', '.faq-head', '.reviews-head',
       '.about-grid > *', '.why-grid > *',
-      '.appt-form', '.contact-card'
+      '.appt-form', '.contact-card',
+      '.warranty-hero-copy', '.warranty-hero-media',
+      '.warranty-figure-card', '.warranty-extended-grid > *',
+      '.warranty-card', '.process-step', '.trust-band-inner'
     ].join(', ');
 
     var els = document.querySelectorAll(selector);
