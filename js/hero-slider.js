@@ -32,10 +32,41 @@
 
   if(total > 1){
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', () => { goTo(i); restartAutoplay(); });
     });
-    if(prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
-    if(nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+    if(prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); restartAutoplay(); });
+    if(nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); restartAutoplay(); });
+  }
+
+  // ---- Autoplay: advance every 4s; pauses on hover, on a hidden tab, and
+  // for prefers-reduced-motion; restarts (rather than stacks) on manual nav ----
+  const AUTOPLAY_MS = 4000;
+  const heroSection = document.querySelector('.hero');
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let autoplayTimer = null;
+
+  function stopAutoplay(){
+    if(autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; }
+  }
+  function startAutoplay(){
+    stopAutoplay();
+    if(total <= 1 || reduceMotionQuery.matches || document.hidden) return;
+    autoplayTimer = setInterval(() => goTo(current + 1), AUTOPLAY_MS);
+  }
+  function restartAutoplay(){ startAutoplay(); }
+
+  if(total > 1){
+    startAutoplay();
+    if(heroSection){
+      heroSection.addEventListener('mouseenter', stopAutoplay);
+      heroSection.addEventListener('mouseleave', startAutoplay);
+    }
+    document.addEventListener('visibilitychange', () => {
+      if(document.hidden) stopAutoplay(); else startAutoplay();
+    });
+    reduceMotionQuery.addEventListener?.('change', () => {
+      if(reduceMotionQuery.matches) stopAutoplay(); else startAutoplay();
+    });
   }
 
   // ---- Hero background video ---------------------------------------------
