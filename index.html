@@ -34,11 +34,20 @@
   <div class="hero-media" aria-hidden="true">
     <video class="hero-video" id="heroVideo"
            autoplay muted loop playsinline webkit-playsinline
-           preload="auto" disablepictureinpicture
-           poster="assets/hero/jackwen-hero-desktop-poster.jpg">
+           preload="auto" disablepictureinpicture>
       <source src="videos/jackwen-hero-mobile.mp4" media="(max-width: 900px) and (orientation: portrait)" type="video/mp4">
       <source src="videos/jackwen-hero-desktop.mp4" type="video/mp4">
     </video>
+    <script>
+      // Poster has no <source>-style media-query variant of its own, so set it
+      // synchronously here (before paint) based on the same breakpoint the
+      // <source> tags use above — otherwise the browser shows the hardcoded
+      // desktop poster on first mobile load, before the mobile video is ready.
+      document.getElementById('heroVideo').poster =
+        window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches
+          ? 'assets/hero/jackwen-hero-mobile-poster.jpg'
+          : 'assets/hero/jackwen-hero-desktop-poster.jpg';
+    </script>
     <div class="hero-overlay"></div>
   </div>
 
