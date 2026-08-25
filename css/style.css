@@ -463,7 +463,7 @@
     padding:56px 40px; overflow:hidden;
     box-shadow:0 24px 50px rgba(22,24,26,0.14), 0 4px 12px rgba(22,24,26,0.06);
   }
-  .warranty-figure-card .icon{width:52px; height:52px; color:var(--red); margin:0 auto 18px;}
+  .warranty-figure-card .icon{display:block; width:44px; height:44px; color:var(--red); margin:0 auto 16px;}
   .warranty-figure-card .icon svg{width:100%; height:100%;}
   .warranty-figure-card .label{font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:18px; display:inline-block;}
   .warranty-figure-card .figure-num{font-size:clamp(56px,9vw,104px);}
@@ -494,7 +494,7 @@
   .warranty-card-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
   .warranty-card{background:#fff; border:1px solid rgba(22,24,26,0.08); border-radius:12px; padding:30px 24px; box-shadow:0 10px 24px rgba(22,24,26,0.06); transition:transform .4s ease, box-shadow .4s ease;}
   .warranty-card:hover{transform:translateY(-6px); box-shadow:0 18px 34px rgba(22,24,26,0.12);}
-  .warranty-card .icon{width:32px; height:32px; color:var(--red); margin-bottom:18px; transition:transform .4s ease;}
+  .warranty-card .icon{display:block; width:26px; height:26px; color:var(--red); margin-bottom:16px; transition:transform .4s ease;}
   .warranty-card .icon svg{width:100%; height:100%;}
   .warranty-card:hover .icon{transform:scale(1.1);}
   .warranty-card h3{color:var(--graphite); font-size:15px; letter-spacing:0.3px; margin-bottom:10px;}
@@ -511,7 +511,7 @@
   .process-steps::before{content:''; position:absolute; top:34px; left:16%; right:16%; height:1px; background:linear-gradient(90deg, rgba(196,30,44,0) 0%, rgba(196,30,44,0.35) 20%, rgba(196,30,44,0.35) 80%, rgba(196,30,44,0) 100%); z-index:0;}
   .process-step{position:relative; z-index:1; text-align:center;}
   .process-step .step-num{width:68px; height:68px; margin:0 auto 22px; border-radius:50%; background:#fff; border:1px solid rgba(196,30,44,0.35); box-shadow:0 6px 16px rgba(22,24,26,0.08); display:flex; align-items:center; justify-content:center; font-family:'Oswald'; font-weight:600; font-size:22px; color:var(--red);}
-  .process-step .icon{width:30px; height:30px; color:var(--red); margin:0 auto 16px;}
+  .process-step .icon{display:block; width:26px; height:26px; color:var(--red); margin:0 auto 14px;}
   .process-step .icon svg{width:100%; height:100%;}
   .process-step h3{color:var(--graphite); font-size:16px; margin-bottom:10px;}
   .process-step p{color:var(--steel); font-size:14px; line-height:1.6; max-width:280px; margin:0 auto;}
@@ -523,7 +523,7 @@
   /* ---- Trust band ---- */
   .trust-band{background:var(--chrome); padding:60px 0; text-align:center; position:relative;}
   .trust-band-inner{max-width:640px; margin:0 auto;}
-  .trust-band .icon{width:44px; height:44px; color:var(--red); margin:0 auto 24px;}
+  .trust-band .icon{display:block; width:36px; height:36px; color:var(--red); margin:0 auto 20px;}
   .trust-band .icon svg{width:100%; height:100%;}
   .trust-band h2{color:var(--graphite); font-size:clamp(28px,4vw,46px); line-height:1.15;}
   .trust-band .accent-line{display:block; width:0; height:2px; background:var(--red); margin:22px auto; transition:width .7s ease .1s;}
