@@ -180,7 +180,7 @@
   .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
   .service-card{position:relative; display:flex; flex-direction:column; padding:28px 26px; background:#fff; border:1px solid rgba(22,24,26,0.08); border-top:3px solid var(--red); border-radius:10px; box-shadow:0 10px 24px rgba(22,24,26,0.08), 0 2px 6px rgba(22,24,26,0.05); transition:transform .25s ease, box-shadow .25s ease;}
   .service-card:hover{transform:translateY(-6px); box-shadow:0 18px 34px rgba(22,24,26,0.14), 0 4px 10px rgba(22,24,26,0.07);}
-  .service-card .num{font-family:'Oswald'; font-size:34px; color:rgba(22,24,26,0.12); margin-bottom:6px;}
+  .service-card .num{font-family:'Oswald'; font-size:34px; color:var(--red); margin-bottom:6px;}
   .service-card .content{position:relative;}
   .service-card h3{color:var(--graphite); font-size:21px; line-height:1.2; margin-bottom:10px;}
   .service-card p{color:var(--steel); font-size:14.5px; line-height:1.55; margin-bottom:16px;}
